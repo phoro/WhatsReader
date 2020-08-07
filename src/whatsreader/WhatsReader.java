@@ -44,9 +44,6 @@ public static String text = null;//S'omple quan es llegeix el fitxer
         
         System.out.println(path +"\n" + text);
         
-        
-        
-        
     }
     
 }

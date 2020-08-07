@@ -38,8 +38,10 @@ public class Reader {
             Scanner input = new Scanner(new File(ruta));
 
             while (input.hasNextLine()) {
+                String lineformat;
                 String line = input.nextLine();
-                text = text + "\n" + line;
+                lineformat = formata(line);
+                text = text + "\n" + lineformat;
                 //System.out.println(line);
             }
             input.close();
@@ -48,6 +50,27 @@ public class Reader {
             ex.printStackTrace();
         }
 
+    }
+    
+    public String formata (String line){
+        String lineformat  ="";
+        
+        /*obté els index d'inici i final de l'identificador*/
+        /*això podria ser un mètode indepentdent*/
+        int indexguio = line.indexOf("-");
+        int indexpunts =line.indexOf(":", indexguio);
+        
+        System.out.println(indexguio +"\n" +indexpunts);
+        if (indexpunts <0){
+            lineformat = line;//si no troba els signe ":" no aplica format
+        } else {
+            
+                //lineformat = line.substring(indexguio+2, indexpunts); //extreu l'id
+            
+           lineformat = line;
+            
+        }
+        return lineformat;
     }
     
     public String getRuta() {

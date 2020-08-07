@@ -29,18 +29,16 @@ public class Controlador {
 
     /*Assigna el text llegit a WhatsReader.text*/
     public void imprimeix() {
-       //System.out.println(lector.getText());
-       WhatsReader.text = lector.getText();
-        
+        //System.out.println(lector.getText());
+        WhatsReader.text = lector.getText();
 
     }
 
-    public void donaformat() {
-
-    }
+    
+    
 
     public void busca() {
-
+        // TO DO
     }
 
     public void crealector(String ruta, String text) {
