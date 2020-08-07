@@ -18,8 +18,8 @@ import vista.WhatsFrame;
  */
 public class WhatsReader {
     
-public static File path = null;
-public static File text = null;
+public static File path = null;//S'omple quan es tria la ruta
+public static String text = null;//S'omple quan es llegeix el fitxer
     /**
      * @param args the command line arguments
      */

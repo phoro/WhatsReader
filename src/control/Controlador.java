@@ -5,7 +5,9 @@
  */
 package control;
 
+import vista.WhatsFrame;
 import whatsreader.Reader;
+import whatsreader.WhatsReader;
 
 /**
  *
@@ -25,8 +27,11 @@ public class Controlador {
         lector.llegeix();
     }
 
+    /*Assigna el text llegit a WhatsReader.text*/
     public void imprimeix() {
-        System.out.println(lector.getText());
+       //System.out.println(lector.getText());
+       WhatsReader.text = lector.getText();
+        
 
     }
 
