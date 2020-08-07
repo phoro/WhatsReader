@@ -67,13 +67,13 @@ public class Reader {
         } else {
 
             //extreu l'id
-            // afegeix un caràcter temporalment per evitar errors pel char ("+")
             String identificador =  line.substring(indexguio + 2, indexpunts); 
             
-            String idfix = identificador.replaceFirst("[+]", "xxx");// s'ha d'arreglar el format abans del replace
+            // s'ha d'arreglar el format abans del replace per evitar errors pel char ("+")
+            String idfix = identificador.replaceFirst("[+]", "");
 
-            
-            String identformat = "<b> " + identificador + " </b>"; //afegeix negreta
+            //afegeix negreta
+            String identformat = "<b> " + idfix + " </b>"; 
 
             lineformat = line.replaceFirst(idfix, identformat) + "<br>";
 
