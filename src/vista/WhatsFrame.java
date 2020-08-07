@@ -7,6 +7,7 @@ package vista;
 
 import control.Controlador;
 import java.io.File;
+import javax.swing.JFileChooser;
 import whatsreader.WhatsReader;
 
 /**
@@ -16,14 +17,14 @@ import whatsreader.WhatsReader;
 public class WhatsFrame extends javax.swing.JFrame {
 
     Controlador control = new Controlador();
+    JFileChooser fc = new JFileChooser();
+
     /**
      * Creates new form WhatsFrame
      */
     public WhatsFrame() {
         initComponents();
-        jFileChooser.setVisible(false);
-        
-        
+
     }
 
     /**
@@ -39,7 +40,6 @@ public class WhatsFrame extends javax.swing.JFrame {
         jButton_llegeix = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jFileChooser = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,21 +61,21 @@ public class WhatsFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
                 .addComponent(jButton_llegeix)
-                .addGap(21, 21, 21))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(115, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_llegeix)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                    .addComponent(jButton2)
+                    .addComponent(jButton_llegeix))
+                .addGap(70, 70, 70))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -89,14 +89,6 @@ public class WhatsFrame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jFileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\GAME\\Desktop\\text.txt"));
-        jFileChooser.setEnabled(false);
-        jFileChooser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooserActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +96,6 @@ public class WhatsFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFileChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -112,8 +103,7 @@ public class WhatsFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jFileChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(99, 99, 99)
+                .addGap(361, 361, 361)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -126,41 +116,28 @@ public class WhatsFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         control.llegeix();
         control.imprimeix();
-        
+
     }//GEN-LAST:event_jButton_llegeixActionPerformed
-
-    private void jFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserActionPerformed
-        // TODO add your handling code here:
-
-        //Desem opció triada
-        int seleccio = jFileChooser.getFileSelectionMode();
-
-        //Si accepta
-        if (seleccio == jFileChooser.APPROVE_OPTION) {
-
-            //Desem la ruta
-            WhatsReader.path = jFileChooser.getSelectedFile();
-            
-            System.out.println(WhatsReader.path);
-            
-            //Creem un controlador
-            
-            jFileChooser.setVisible(false);
-            jPanel1.setVisible(true);
-        }
-    }//GEN-LAST:event_jFileChooserActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        jFileChooser.setVisible(true);
-        jPanel1.setVisible(false);
+        
+        
+        //Obra selector d'arxius i i desa l'opció triada
+        int seleccio = fc.showOpenDialog(jPanel1);
+        if (seleccio == JFileChooser.APPROVE_OPTION) {
+
+            //Desa la ruta
+            WhatsReader.path = fc.getSelectedFile();
+
+        }  
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_llegeix;
-    private javax.swing.JFileChooser jFileChooser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
