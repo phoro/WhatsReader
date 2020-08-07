@@ -15,13 +15,13 @@ import java.util.Scanner;
  * @author GAME
  */
 public class Reader {
+
     String text = "";
     String ruta = "";
- 
-    
+
     public Reader(String text, String ruta) {
         this.ruta = ruta;
-         this.text = text;
+        this.text = text;
     }
 
     /*
@@ -30,7 +30,7 @@ public class Reader {
      */
     public void llegeix() {
         System.out.println("comença a llegir");
-        if (ruta == ""){
+        if (ruta == "") {
             System.out.println("ruta buida...reasignant");
             ruta = WhatsReader.path.toString();
         }
@@ -52,31 +52,36 @@ public class Reader {
         }
 
     }
-    
-    public String formata (String line){
-        String lineformat  ="";
-        
+
+    public String formata(String line) {
+        String lineformat = "";
+
         /*obté els index d'inici i final de l'identificador*/
-        /*això podria ser un mètode indepentdent*/
+ /*això podria ser un mètode indepentdent*/
         int indexguio = line.indexOf("-");
-        int indexpunts =line.indexOf(":", indexguio);
-        
-        System.out.println(indexguio +"\n" +indexpunts);
-        if (indexpunts <0){
+        int indexpunts = line.indexOf(":", indexguio);
+
+        System.out.println(indexguio + "\n" + indexpunts);
+        if (indexpunts < 0) {
             lineformat = line + "<br>";//si no troba els signe ":" no aplica format
         } else {
+
+            //extreu l'id
+            // afegeix un caràcter temporalment per evitar errors pel char ("+")
+            String identificador =  line.substring(indexguio + 2, indexpunts); 
             
-                 String identificador = line.substring(indexguio + 2, indexpunts); //extreu l'id
-                 String identformat = "<b>" + identificador + "</b>"; //afegeix negreta
-                 
-                 String idfix = identificador.replaceAll("[-+,^:;]", "");// s'ha d'arreglar el format aband del replace
+            String idfix = identificador.replaceFirst("[+]", "xxx");// s'ha d'arreglar el format abans del replace
+
             
-           lineformat = line.replaceFirst(idfix,identformat ) + "<br>";
-            
+            String identformat = "<b> " + identificador + " </b>"; //afegeix negreta
+
+            lineformat = line.replaceFirst(idfix, identformat) + "<br>";
+
+            //[^\W]
         }
         return lineformat;
     }
-    
+
     public String getRuta() {
         return ruta;
     }
