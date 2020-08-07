@@ -23,7 +23,7 @@ public class Controlador {
     }
 
     public void llegeix() {
-        System.out.println("controlador: --> a llegir");
+        
         lector.llegeix();
     }
 

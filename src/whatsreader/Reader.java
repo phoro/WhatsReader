@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * Lee un archivo de texto
  *
- * @author GAME
+ * @author r0b
  */
 public class Reader {
 
