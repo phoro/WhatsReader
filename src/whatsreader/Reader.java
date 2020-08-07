@@ -44,6 +44,7 @@ public class Reader {
                 text = text + "\n" + lineformat;
                 //System.out.println(line);
             }
+            System.out.println("fitxer llegit");
             input.close();
 
         } catch (FileNotFoundException ex) {
@@ -62,12 +63,15 @@ public class Reader {
         
         System.out.println(indexguio +"\n" +indexpunts);
         if (indexpunts <0){
-            lineformat = line;//si no troba els signe ":" no aplica format
+            lineformat = line + "<br>";//si no troba els signe ":" no aplica format
         } else {
             
-                //lineformat = line.substring(indexguio+2, indexpunts); //extreu l'id
+                 String identificador = line.substring(indexguio + 2, indexpunts); //extreu l'id
+                 String identformat = "<b>" + identificador + "</b>"; //afegeix negreta
+                 
+                 String idfix = identificador.replaceAll("[-+,^:;]", "");// s'ha d'arreglar el format aband del replace
             
-           lineformat = line;
+           lineformat = line.replaceFirst(idfix,identformat ) + "<br>";
             
         }
         return lineformat;
