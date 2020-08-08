@@ -32,13 +32,16 @@ public class Controlador {
         WhatsReader.text = lector.getText();
 
     }
-
-    public void busca() {
-        // TO DO
+    public void surt(){
+        System.exit(0);
     }
 
+    public void busca() {
+        // TODO
+    }
+/*
     public void crealector(String ruta, String text) {
         Reader lector = new Reader(ruta, text);
     }
-
+*/
 }
