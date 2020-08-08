@@ -43,7 +43,8 @@ public class WhatsFrame extends javax.swing.JFrame {
         jEditorPane1 = new javax.swing.JEditorPane();
         jPanel1 = new javax.swing.JPanel();
         obrir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        surt = new javax.swing.JButton();
+        neteja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Whats Reader");
@@ -84,10 +85,17 @@ public class WhatsFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Surt");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        surt.setText("Surt");
+        surt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                surtActionPerformed(evt);
+            }
+        });
+
+        neteja.setText("Neteja");
+        neteja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                netejaActionPerformed(evt);
             }
         });
 
@@ -98,8 +106,10 @@ public class WhatsFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(obrir, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(neteja, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addComponent(surt, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,7 +118,8 @@ public class WhatsFrame extends javax.swing.JFrame {
                 .addGap(0, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(obrir, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(surt, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(neteja, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -138,15 +149,26 @@ public class WhatsFrame extends javax.swing.JFrame {
 
     private void obrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obrirActionPerformed
 
+        
         //Obra selector d'arxius i i desa l'opció triada
         int seleccio = filechoos.showOpenDialog(jPanel1);
         if (seleccio == JFileChooser.APPROVE_OPTION) {
+            
+            //TODO
+            //no funciona, fins que no acaba de llegir no canvia
+            // potser processament en paral·lel pel Reader
+            jLabel1.setText("processant...");
 
             //Desa la ruta
             WhatsReader.path = filechoos.getSelectedFile();
+            
 
             //canvia el nom a l'etiqueta
             jLabel1.setText(WhatsReader.path.toString());
+            
+            //Informa al controlador 
+            control.setLectorRuta(WhatsReader.path.toString());
+            control.setLectorText("");
 
             control.llegeix();// llegeix el fitxer
 
@@ -162,19 +184,29 @@ public class WhatsFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_obrirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void surtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surtActionPerformed
         // TODO add your handling code here:
         control.surt();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_surtActionPerformed
+
+    private void netejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netejaActionPerformed
+        // TODO add your handling code here:
+        jEditorPane1.setText("");
+        jLabel1.setText("cap arxiu seleccionat");
+        control.neteja();
+        
+        
+    }//GEN-LAST:event_netejaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton neteja;
     private javax.swing.JButton obrir;
+    private javax.swing.JButton surt;
     // End of variables declaration//GEN-END:variables
 }

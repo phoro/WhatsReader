@@ -10,8 +10,9 @@ import java.io.File;
 import vista.WhatsFrame;
 
 /**
- * Lee un archivo de texto de chat de whatsapp Aplica formato Permite buscar
- * entradas por usuaria
+ * Lee un archivo de texto de chat de whatsapp 
+ * Aplica formato 
+ * Permite buscar entradas por usuaria
  *
  * @author r0b
  */
@@ -37,6 +38,22 @@ public class WhatsReader {
 
         });
 
+    }
+
+    public static File getPath() {
+        return path;
+    }
+
+    public static void setPath(File path) {
+        WhatsReader.path = path;
+    }
+
+    public static String getText() {
+        return text;
+    }
+
+    public static void setText(String text) {
+        WhatsReader.text = text;
     }
 
 }

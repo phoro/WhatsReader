@@ -17,8 +17,9 @@ public class Controlador {
     Reader lector = new Reader("", "");
 
     public Controlador() {
-        lector.setText("");
         lector.setRuta("");
+        lector.setText("");
+        
     }
 
     public void llegeix() {
@@ -38,10 +39,27 @@ public class Controlador {
 
     public void busca() {
         // TODO
+    } 
+
+    
+    
+    public void neteja() {
+        //System.out.println(WhatsReader.path + "\n" + WhatsReader.text+ "\n");
+        WhatsReader.setText("");
+        WhatsReader.setPath(null);
+        //System.out.println(WhatsReader.path + "\n" + WhatsReader.text);
     }
-/*
-    public void crealector(String ruta, String text) {
-        Reader lector = new Reader(ruta, text);
+    
+    public Reader getLector() {
+        return lector;
     }
-*/
+
+    public void setLectorRuta(String ruta) {
+        lector.setRuta(ruta);
+    }
+    
+    public void setLectorText(String text) {
+        lector.setText(text);
+    }
+
 }
