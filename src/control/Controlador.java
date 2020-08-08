@@ -5,7 +5,6 @@
  */
 package control;
 
-import vista.WhatsFrame;
 import whatsreader.Reader;
 import whatsreader.WhatsReader;
 
@@ -23,7 +22,7 @@ public class Controlador {
     }
 
     public void llegeix() {
-        
+
         lector.llegeix();
     }
 
@@ -33,9 +32,6 @@ public class Controlador {
         WhatsReader.text = lector.getText();
 
     }
-
-    
-    
 
     public void busca() {
         // TO DO
