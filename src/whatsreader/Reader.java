@@ -16,10 +16,15 @@ import java.util.Scanner;
  */
 public class Reader {
 
-    String text = "";
     String ruta = "";
+    String text = "";
 
-    public Reader(String text, String ruta) {
+    public Reader(String ruta) {
+        this.ruta = ruta;
+
+    }
+
+    public Reader(String ruta, String text) {
         this.ruta = ruta;
         this.text = text;
     }
@@ -29,13 +34,14 @@ public class Reader {
     i el desa a this.text
      */
     public void llegeix() {
-        System.out.println("comença a llegir");
+
         if (ruta == "") {
-            System.out.println("ruta buida...reasignant");
+
             ruta = WhatsReader.path.toString();
         }
         try {
             Scanner input = new Scanner(new File(ruta));
+            System.out.println("Scanner llegint " + ruta);
 
             while (input.hasNextLine()) {
                 String lineformat;
@@ -44,7 +50,7 @@ public class Reader {
                 text = text + "\n" + lineformat;
                 //System.out.println(line);
             }
-            System.out.println("fitxer llegit");
+            //System.out.println("fitxer llegit");
             input.close();
 
         } catch (FileNotFoundException ex) {
@@ -61,23 +67,24 @@ public class Reader {
         int indexguio = line.indexOf("-");
         int indexpunts = line.indexOf(":", indexguio);
 
-        System.out.println(indexguio + "\n" + indexpunts);
         if (indexpunts < 0) {
             lineformat = line + "<br>";//si no troba els signe ":" no aplica format
         } else {
+            char plus = '+';
 
             //extreu l'id
-            String identificador =  line.substring(indexguio + 2, indexpunts); 
-            
+            String identificador = line.substring(indexguio + 2, indexpunts);
+
             // s'ha d'arreglar el format abans del replace per evitar errors pel char ("+")
-            String idfix = identificador.replaceFirst("[+]", "");
+            //Talla la cadena si el primer caràcter és '+'
+            while (identificador.charAt(0) == plus) {
+                identificador = identificador.substring(1);
+            }
 
-            //afegeix negreta
-            String identformat = "<b> " + idfix + " </b>"; 
+            //TODO crear un hipertext per buscar per nom
+            //afegeix negreta a l'identificador
+            lineformat = line.replaceFirst(identificador, "<b>" + identificador + "</b>") + "<br>";
 
-            lineformat = line.replaceFirst(idfix, identformat) + "<br>";
-
-            //[^\W]
         }
         return lineformat;
     }
