@@ -80,6 +80,9 @@ public class Reader {
             while (identificador.charAt(0) == plus) {
                 identificador = identificador.substring(1);
             }
+            
+            //Afegeix l'identificador a la llista
+            WhatsReader.addIdentificador(identificador);
 
             //TODO crear un hipertext per buscar per nom
             //afegeix negreta a l'identificador

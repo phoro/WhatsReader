@@ -158,6 +158,7 @@ public class WhatsFrame extends javax.swing.JFrame {
             //no funciona, fins que no acaba de llegir no canvia
             // potser processament en paral·lel pel Reader
             jLabel1.setText("processant...");
+            control.neteja();
 
             //Desa la ruta
             WhatsReader.path = filechoos.getSelectedFile();
@@ -179,6 +180,8 @@ public class WhatsFrame extends javax.swing.JFrame {
 
             // Dona format i escriu el text a l'UI
             jEditorPane1.setText("<font face=\"verdana\" size=4 >" + WhatsReader.text + "</font>");
+            
+            control.imprimeixLlista(WhatsReader.getIdentificadors());
 
         }
 

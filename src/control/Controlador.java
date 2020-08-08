@@ -5,6 +5,7 @@
  */
 package control;
 
+import java.util.List;
 import whatsreader.Reader;
 import whatsreader.WhatsReader;
 
@@ -42,13 +43,21 @@ public class Controlador {
     } 
 
     
-    
+    /*Esborra text, ruta i identificadors*/
     public void neteja() {
         //System.out.println(WhatsReader.path + "\n" + WhatsReader.text+ "\n");
         WhatsReader.setText("");
         WhatsReader.setPath(null);
+        WhatsReader.esborraIdentificadors();
         //System.out.println(WhatsReader.path + "\n" + WhatsReader.text);
     }
+    
+    public void imprimeixLlista(List<String> llista){
+        for (String id:llista){
+            System.out.println(id);
+        }
+    }
+    
     
     public Reader getLector() {
         return lector;
