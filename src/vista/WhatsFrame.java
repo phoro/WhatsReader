@@ -244,7 +244,8 @@ public class WhatsFrame extends javax.swing.JFrame {
         } else {
             int posicio = control.busca(opcio); //desa l'opcio triada al controlador
             //TODO mou la vista a la posició
-            
+            // segurament falla per les cadenes html, comprobar
+            // no coincideix la posicio obtinguda amb la caretposition
             
             try {
                 // Focus the text area

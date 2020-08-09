@@ -61,7 +61,7 @@ public class Controlador {
     }
     
     public int busca (String identificador){
-        int posicio;
+        int posicio = 0;
         lector.setQuery(identificador);
         posicio = lector.busca(identificador);
         return posicio;

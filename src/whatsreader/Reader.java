@@ -18,6 +18,7 @@ public class Reader {
 
     String ruta = "";
     String text = "";
+    String rawtext = ""; //text en brut pel posicionament de la vista
     String query = "";
 
     public Reader(String ruta) {
@@ -32,7 +33,10 @@ public class Reader {
     
     //Torna la posició de la cadena donada
     public int busca(String identificador){
-        int posicio = text.indexOf(identificador);
+        int posicio = 0;
+        //posicio = text.indexOf(identificador);
+                posicio = rawtext.indexOf(identificador);
+
         System.out.println(posicio);
         return posicio;
         
@@ -56,11 +60,11 @@ public class Reader {
 
             while (input.hasNextLine()) {
                 String lineformat;
+                
                 String line = input.nextLine();
-
-                // no format
-                lineformat = formata(line);
-                text = text + "\n" + lineformat;
+                lineformat = formata(line);//formata
+                text = text + "\n" + lineformat;//desa el text
+                rawtext = rawtext + "\n"+ line;//text sense format
 
                 //System.out.println(line);
             }
