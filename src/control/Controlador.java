@@ -60,9 +60,11 @@ public class Controlador {
         //System.out.println(WhatsReader.path + "\n" + WhatsReader.text);
     }
     
-    public void busca (String identificador){
+    public int busca (String identificador){
+        int posicio;
         lector.setQuery(identificador);
-        lector.busca(identificador);
+        posicio = lector.busca(identificador);
+        return posicio;
     }
     
     // mètode debug

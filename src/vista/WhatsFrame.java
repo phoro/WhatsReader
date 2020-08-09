@@ -8,6 +8,7 @@ package vista;
 import control.Controlador;
 import java.awt.Font;
 
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import whatsreader.WhatsReader;
@@ -239,13 +240,25 @@ public class WhatsFrame extends javax.swing.JFrame {
         }
 
         if (opcio == null) {
-            //labelinfo.setText("no hi ha identificadors disponibles");
 
         } else {
-            control.busca(opcio); //desa l'opcio triada al controlador
+            int posicio = control.busca(opcio); //desa l'opcio triada al controlador
+            //TODO mou la vista a la posició
+            
+            
+            try {
+                // Focus the text area
+                jEditorPane1.requestFocusInWindow();
+                
+                //posiciona la vista
+                //jEditorPane1.moveCaretPosition(posicio);
+                jEditorPane1.setCaretPosition(posicio);
+                
+            } catch (Exception ex) {
+                ex.printStackTrace();
 
-            // Focus the text area
-            jEditorPane1.requestFocusInWindow();
+            }
+
         }
 
         //System.out.println(opcio);
