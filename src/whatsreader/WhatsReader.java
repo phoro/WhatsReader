@@ -32,6 +32,7 @@ public class WhatsReader {
 
         //Llança la finestra UI
         EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 try {
                     WhatsFrame frame = new WhatsFrame();
@@ -45,6 +46,38 @@ public class WhatsReader {
 
     }
 
+    
+    
+    // torna un array 
+    public static String[] getArrayIdentificadors(){
+        
+       String[] aidentificadors = new String[getIdentificadors().size()];
+       aidentificadors = getIdentificadors().toArray(aidentificadors);
+       
+       return aidentificadors;
+        
+    }
+
+    /**
+     * Afegeix un element a la llista.
+     * Comprova previament que no hi sigui
+     */
+    public static void addIdentificador(String identificador) {
+        if (!identificadors.contains(identificador)) {
+            WhatsReader.identificadors.add(identificador);
+        }
+
+    }
+    
+    //Esborra llista d'identificadors
+    public static void esborraIdentificadors() {
+        identificadors.clear();
+        
+    }
+    
+    /* getters & setters */
+   
+    
     public static File getPath() {
         return path;
     }
@@ -63,23 +96,6 @@ public class WhatsReader {
 
     public static List<String> getIdentificadors() {
         return identificadors;
-    }
-
-    /**
-     * 
-     * Afegeix un element a la llista
-     * Comprova previament que no hi sigui
-     */
-    public static void addIdentificador(String identificador) {
-        if (!identificadors.contains(identificador)) {
-            WhatsReader.identificadors.add(identificador);
-        }
-
-    }
-    
-    public static void esborraIdentificadors() {
-        identificadors.clear();
-        
     }
 
 }

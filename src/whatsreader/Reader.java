@@ -18,6 +18,7 @@ public class Reader {
 
     String ruta = "";
     String text = "";
+    String query = "";
 
     public Reader(String ruta) {
         this.ruta = ruta;
@@ -28,13 +29,23 @@ public class Reader {
         this.ruta = ruta;
         this.text = text;
     }
+    
+    //Torna la posició de la cadena donada
+    public int busca(String identificador){
+        int posicio = text.indexOf(identificador);
+        System.out.println(posicio);
+        return posicio;
+        
+    }
 
-    /*
-    llegeix el contingut de l'arxiu
-    i el desa a this.text
+    /**
+   * llegeix el contingut de l'arxiu
+    *i el desa a this.text
+    *crida a  formata()
+    *que formata el text i obté identificadors
      */
     public void llegeix() {
-
+        // busca la ruta
         if (ruta == "") {
 
             ruta = WhatsReader.path.toString();
@@ -46,8 +57,11 @@ public class Reader {
             while (input.hasNextLine()) {
                 String lineformat;
                 String line = input.nextLine();
+
+                // no format
                 lineformat = formata(line);
                 text = text + "\n" + lineformat;
+
                 //System.out.println(line);
             }
             //System.out.println("fitxer llegit");
@@ -59,6 +73,10 @@ public class Reader {
 
     }
 
+    /**
+     * formata el text i obte l'identificador i el desa
+     *
+     */
     public String formata(String line) {
         String lineformat = "";
 
@@ -81,11 +99,10 @@ public class Reader {
             while (identificador.charAt(0) == plus) {
                 identificador = identificador.substring(1);
             }
-            
+
             //Afegeix l'identificador a la llista
             WhatsReader.addIdentificador(identificador);
 
-            //TODO crear un hipertext per buscar per nom
             //afegeix negreta a l'identificador
             lineformat = line.replaceFirst(identificador, "<b>" + identificador + "</b>") + "<br>";
 
@@ -93,6 +110,7 @@ public class Reader {
         return lineformat;
     }
 
+    /*getters i setters*/
     public String getRuta() {
         return ruta;
     }
@@ -107,6 +125,14 @@ public class Reader {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
 }

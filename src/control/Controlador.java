@@ -20,6 +20,7 @@ public class Controlador {
     public Controlador() {
         lector.setRuta("");
         lector.setText("");
+        lector.setQuery("");
         
     }
 
@@ -43,15 +44,28 @@ public class Controlador {
     } 
 
     
-    /*Esborra text, ruta i identificadors*/
+    /**
+     * Esborra text, ruta i identificadors de WhatsReader
+     * Esborra text, ruta i query de Reader
+     */
     public void neteja() {
         //System.out.println(WhatsReader.path + "\n" + WhatsReader.text+ "\n");
         WhatsReader.setText("");
         WhatsReader.setPath(null);
         WhatsReader.esborraIdentificadors();
+        
+        lector.setRuta("");
+        lector.setText("");
+        lector.setQuery("");
         //System.out.println(WhatsReader.path + "\n" + WhatsReader.text);
     }
     
+    public void busca (String identificador){
+        lector.setQuery(identificador);
+        lector.busca(identificador);
+    }
+    
+    // mètode debug
     public void imprimeixLlista(List<String> llista){
         for (String id:llista){
             System.out.println(id);
@@ -69,6 +83,10 @@ public class Controlador {
     
     public void setLectorText(String text) {
         lector.setText(text);
+    }
+    
+    public void setLectorQuery(String text) {
+        lector.setQuery(text);
     }
 
 }
