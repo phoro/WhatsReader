@@ -152,6 +152,7 @@ public class WhatsFrame extends javax.swing.JFrame {
         
         //Obra selector d'arxius i i desa l'opció triada
         int seleccio = filechoos.showOpenDialog(jPanel1);
+        
         if (seleccio == JFileChooser.APPROVE_OPTION) {
             
             //TODO
@@ -188,12 +189,12 @@ public class WhatsFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_obrirActionPerformed
 
     private void surtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surtActionPerformed
-        // TODO add your handling code here:
+        
         control.surt();
     }//GEN-LAST:event_surtActionPerformed
 
     private void netejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netejaActionPerformed
-        // TODO add your handling code here:
+        
         jEditorPane1.setText("");
         jLabel1.setText("cap arxiu seleccionat");
         control.neteja();

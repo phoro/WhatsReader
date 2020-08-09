@@ -12,8 +12,9 @@ import java.util.List;
 import vista.WhatsFrame;
 
 /**
- * Lee un archivo de texto de chat de whatsapp Aplica formato Permite buscar
- * entradas por usuaria
+ * Lee un archivo de texto de chat de whatsapp Aplica formato 
+ * Identifica usuarios
+ * Permite buscar entradas por usuaria
  *
  * @author r0b
  */
@@ -21,7 +22,7 @@ public class WhatsReader {
 
     public static File path = null;//S'omple quan es tria la ruta
     public static String text = null;//S'omple quan s'imprimeix el fitxer
-    //Llista els identificadors de l'arxiu
+    //Llista dels identificadors de l'arxiu
     private static List<String> identificadors = new ArrayList<String>();
 
     /**
@@ -29,6 +30,7 @@ public class WhatsReader {
      */
     public static void main(String[] args) {
 
+        //Llança la finestra UI
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -63,7 +65,11 @@ public class WhatsReader {
         return identificadors;
     }
 
-    /* Afegeix un element a la llista si no hi és*/
+    /**
+     * 
+     * Afegeix un element a la llista
+     * Comprova previament que no hi sigui
+     */
     public static void addIdentificador(String identificador) {
         if (!identificadors.contains(identificador)) {
             WhatsReader.identificadors.add(identificador);

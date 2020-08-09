@@ -67,6 +67,7 @@ public class Reader {
         int indexguio = line.indexOf("-");
         int indexpunts = line.indexOf(":", indexguio);
 
+        //TODO millorar el filtre per evitar identificadors erronis
         if (indexpunts < 0) {
             lineformat = line + "<br>";//si no troba els signe ":" no aplica format
         } else {
